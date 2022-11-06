@@ -1,3 +1,3 @@
-# Addon Name
+# TradeSkillMaster
 
-This is the repository for <Addon Name>. Modified for Ascension.gg. 
+This is the repository for Trade Skill Master (TSM). Modified for Ascension.gg. 
