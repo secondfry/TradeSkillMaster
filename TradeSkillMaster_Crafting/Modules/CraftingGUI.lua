@@ -139,7 +139,7 @@ function GUI:ShowGatheringFrame()
 end
 
 function GUI:ShowProfessionWindow()
-	if not TradeSkillFrame then return TSMAPI:CreateTimeDelay("craftingShowProfessionDelay", 0, GUI.ShowProfessionWindow) end
+	if not TradeSkillFrame and not AscensionTradeSkillFrame then return TSMAPI:CreateTimeDelay("craftingShowProfessionDelay", 0, GUI.ShowProfessionWindow) end
 	-- if GetTradeSkillLine() == GetSpellInfo(53428) or IsTradeSkillGuild() then
 	if GetTradeSkillLine() == GetSpellInfo(53428) then
 		-- runeforging or guild profession
@@ -153,6 +153,9 @@ function GUI:ShowProfessionWindow()
 		end
 		return
 	end
+
+	AscensionTradeSkillFrame:UnregisterEvent("TRADE_SKILL_SHOW")
+	AscensionTradeSkillFrame:OpenOldUI()
 	
 	GUI:ShowSwitchButton()
 	if TSM.db.global.showingDefaultFrame then return end
@@ -647,16 +650,16 @@ function GUI:CreateQueueFrame(parent)
 		
 		GameTooltip:AddLine(" ")
 		if moneyCoinsTooltip then
-			GameTooltip:AddLine("Crafting Cost: " .. (TSMAPI:FormatTextMoneyIcon(cost, "|cffffff00")))
+			GameTooltip:AddLine("Crafting Cost: " .. (TSMAPI:FormatTextMoneyIcon(cost, "|cffffff00") or "---"))
 		else
-			GameTooltip:AddLine("Crafting Cost: " .. (TSMAPI:FormatTextMoney(cost, "|cffffff00")))
+			GameTooltip:AddLine("Crafting Cost: " .. (TSMAPI:FormatTextMoney(cost, "|cffffff00") or "---"))
 		end
 		if data.numQueued>1 then
-		local totalcost = cost * data.numQueued
+			local totalcost = cost and cost * data.numQueued
 			if moneyCoinsTooltip then
-				GameTooltip:AddLine("Total Cost: " .. (TSMAPI:FormatTextMoneyIcon(totalcost, "|cffffff00")))
+				GameTooltip:AddLine("Total Cost: " .. (TSMAPI:FormatTextMoneyIcon(totalcost, "|cffffff00") or "---"))
 			else
-				GameTooltip:AddLine("Total Cost: " .. (TSMAPI:FormatTextMoney(totalcost, "|cffffff00")))
+				GameTooltip:AddLine("Total Cost: " .. (TSMAPI:FormatTextMoney(totalcost, "|cffffff00") or "---"))
 			end
 		end
 		
