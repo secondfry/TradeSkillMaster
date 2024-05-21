@@ -9,6 +9,7 @@
 ## X-Curse-Project-Name: TradeSkillMaster_Accounting
 ## X-Curse-Project-ID: tradeskillmaster_accounting
 ## X-Curse-Repository-ID: wow/tradeskillmaster_accounting/mainline
+## X-IconTexture: Interface\AddOns\TradeSkillMaster\Media\TSMLogo
 
 Locale\enUS.lua
 Locale\frFR.lua
