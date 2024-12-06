@@ -76,6 +76,7 @@ L["Auction Frame Scale"] = true
 L["Auction House Tab Settings"] = true
 L["Auction not found. Skipped."] = true
 L["Auctionator - Auction Value"] = true
+L["Auctionator - Disenchant Value"] = true
 L["Auctioneer - Appraiser"] = true
 L["Auctioneer - Market Value"] = true
 L["Auctioneer - Minimum Buyout"] = true

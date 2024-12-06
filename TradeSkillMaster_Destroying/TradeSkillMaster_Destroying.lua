@@ -68,6 +68,11 @@ function TSM:IsDestroyable(bag, slot, itemString)
 	local _, link, quality, _, _, iType = TSMAPI:GetSafeItemInfo(itemString)
 	local WEAPON, ARMOR = GetAuctionItemClasses()
 	if itemString and not TSMAPI.DisenchantingData.notDisenchantable[itemString] and (iType == ARMOR or iType == WEAPON) and (quality >= 2 and quality <= TSM.db.global.deMaxQuality) then
+
+		local valueSell = select(11, GetItemInfo(link))
+		local valueDE = select(4, GetAddOnInfo("Auctionator")) == 1 and Atr_GetDisenchantValue and Atr_GetDisenchantValue(link) or nil
+		if (valueSell > valueDE) then return unpack({}) end
+
 		destroyCache[itemString] = {IsSpellKnown(TSM.spells.disenchant) and GetSpellInfo(TSM.spells.disenchant), 1}
 		return unpack(destroyCache[itemString])
 	end

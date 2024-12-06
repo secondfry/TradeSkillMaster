@@ -285,6 +285,9 @@ function TSM:RegisterModule()
 	if select(4, GetAddOnInfo("Auctionator")) == 1 and Atr_GetAuctionBuyout then
 		tinsert(TSM.priceSources, { key = "AtrValue", label = L["Auctionator - Auction Value"], callback = Atr_GetAuctionBuyout })
 	end
+	if select(4, GetAddOnInfo("Auctionator")) == 1 and Atr_GetDisenchantValue then
+		tinsert(TSM.priceSources, { key = "AtrDE", label = L["Auctionator - Disenchant Value"], callback = Atr_GetDisenchantValue })
+	end
 	-- Vendor Buy Price
 	tinsert(TSM.priceSources, { key = "VendorBuy", label = L["Buy from Vendor"], callback = function(itemLink) return TSMAPI:GetVendorCost(TSMAPI:GetItemString(itemLink)) end })
 
